@@ -35,11 +35,17 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_TOKEN }}
 
-    - name: Build and push Docker image
-      uses: docker/build-push-action@v4.0.0
-      with:
-        context: .
-        file: cadvisor/Dockerfile
-        push: true
-        tags: ${{ env.IMAGE_VERSION }}
+    - name: Build Image
+      run: docker build -f cadvisor/Dockerfile -t ${{ DOCKER_IMAGE_NAME }}:${{ IMAGE_VERSION }} .
+
+    - name: Push Image
+      run: docker push  ${{ DOCKER_IMAGE_NAME }}:${{ IMAGE_VERSION }}
+
+    # - name: Build and push Docker image
+    #   uses: docker/build-push-action@v4.0.0
+    #   with:
+    #     context: .
+    #     file: cadvisor/Dockerfile
+    #     push: true
+    #     tags: ${{ env.IMAGE_VERSION }}
           
