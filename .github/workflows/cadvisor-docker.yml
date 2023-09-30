@@ -41,5 +41,5 @@ jobs:
         context: .
         file: cadvisor/Dockerfile
         push: true
-        tags: ${{ steps.meta.outputs.tags }}
+        tags: ${{ env.IMAGE_VERSION }}
           
