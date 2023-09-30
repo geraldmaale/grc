@@ -39,10 +39,10 @@ jobs:
     #   run: docker build -f cadvisor/Dockerfile -t ${{ env.DOCKER_IMAGE_NAME }}:${{ env.IMAGE_VERSION }} .
 
     - name: Pull Base Image
-      run: docker pull ${{ CADVISOR_BASE_IMAGE }}
+      run: docker pull ${{ env.CADVISOR_BASE_IMAGE }}
 
     - name: Tag Image
-      run: docker tag ${{ CADVISOR_BASE_IMAGE }} ${{ env.DOCKER_IMAGE_NAME }}
+      run: docker tag ${{ env.CADVISOR_BASE_IMAGE }} ${{ env.DOCKER_IMAGE_NAME }}
 
     - name: Push Image
       run: docker push  ${{ env.DOCKER_IMAGE_NAME }}
